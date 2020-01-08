@@ -10,6 +10,7 @@ def main(weather_args):
 	Args:
 		weather_args: A list of cities, optionally with a -c (for Celcius) or -f (for Farenheit) flag after the city name.  
 	"""
+   
     i = 1
     while i < len(weather_args):
         city = weather_args[i].strip(',')
