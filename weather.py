@@ -7,9 +7,9 @@ import sys
 
 
 @click.command()
-@click.option('--token', help='your API token')
-@click.option('--city', help='the cities to list')
-@click.option('--T', 'temp_scale', type=click.Choice(['Celsius', 'Fahrenheit']), default='Celsius',
+@click.option('--token', required=True, help='your API token')
+@click.option('--city', required=True, help='the cities to list')
+@click.option('--T', 'temp_scale', type=click.Choice(['Celsius', 'Fahrenheit']), default='Celsius', show_default='Celsius',
               help='temperature scale')
 def weather(token, city, temp_scale):
     """This script prints the current temperature in CITY."""
@@ -30,7 +30,7 @@ def weather(token, city, temp_scale):
             if city_json['error']['code'] == 101:
                 print('Error: {} - {}'.format(city_json['error']['type'], city_json['error']['info'], file=sys.stderr))
             else:
-                print('Error: city does not exist. Please try cities like London, New York, Cape Town or Blabla',
+                print('Error: {} does not exist. Please try cities like London, New York, Cape Town or Blabla'.format(city),
                       file=sys.stderr)
 
 
